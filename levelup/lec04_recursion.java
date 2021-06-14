@@ -1,58 +1,79 @@
 package levelup;
 import java.util.*;
 public class lec04_recursion {
- 
-    //tree diagram is more important than the code
-    public static int coin_permutation_infinite(int[] coins , int[] tar){
-       
-       00
-        return 0;
-    }
 
-    public static int coin_combination_infinite(int[] coins , int[] tar){
-        return 0;
+    public static void main(String[] args){
+        int[] coins = {1,2,3};
+    //  int count =    permutationInfiCoins(coins, 10, "");
+    //int count =    combinationInfiCoins(coins, 10, "",0);
+    // int count =     permutationSingleCoins(coins,0, 3, "");
+    int count =     combinationSingleCoins(coins, 3, "",0);
+  
+        System.out.print(count);
     }
-
-    public static int coin_permutaion_single(int[] coins , int tar, String psf, HashSet<Integer> used){
-        if (tar == 0){
-            // print(ans);
+    // Permutation of Infinite coins to make target sum
+    public static int permutationInfiCoins(int [] arr, int tar, String ans){
+        if(tar == 0 ){
+            System.out.println(ans);
+        return 1;
         }else{
-           
-            for (int c : coins){
-                if(!used.contains(c)){
-                    HashSet<Integer> set = new HashSet<>(used) ;
-                    set.add(c);
-                     coin_permutaion_single(coins, tar-c, psf+c, set);
-                    set.remove(c);
+            int count = 0;
+            for(int i  = 0; i< arr.length ; i++){
+                if(tar-arr[i] >= 0)
+                count += permutationInfiCoins(arr, tar- arr[i], ans+" "+arr[i]);
+
+            }
+            return count;
+        }
+    }    
+    // cmbination of infinte coins to make target sum
+    public static int combinationInfiCoins(int[] arr, int tar, String ans, int idx){
+        if(tar == 0){
+            System.out.println(ans);
+            return 1;
+        }else{
+            int count = 0 ;
+            for(int i = idx ; i< arr.length ; i++){
+                if(tar - arr[i] >= 0)
+                count += combinationInfiCoins(arr, tar- arr[i], ans+" "+arr[i], i);
+            }
+            return count;
+        }
+    }
+
+    // THIS IS V V V V Important
+    // Remember we use visited here to stop the current used coin from going to next call
+     public static int permutationSingleCoins(int [] arr, int vis , int tar , String ans){
+        if(tar == 0){
+            System.out.println(ans);
+            return 1;
+        }else{
+
+            int count = 0;
+            for(int i = 0 ; i < arr.length ; i++){
+                if( tar - arr[i] >=0 && (vis & (1 << i)) == 0){
+                    vis^= (1 << i);
+                    count +=  permutationSingleCoins(arr, vis ,tar - arr[i], ans + arr[i]);
+                    vis^= (1 << i);
                 }
             }
-
+            return count;
         }
-    }
-    public static int combinationInfiCoins_subs(int[] arr, int tar, int ind , String ans){
-        if(tar == 0){
-            return ans;
+     }
+     public static int combinationSingleCoins(int [] arr, int tar , String ans, int idx){
+        if(tar ==  0){
+            System.out.println(ans);
             return 1;
-        }else {
-                int count = 0;
-            if (tar - arr[ind] >= 0){
-
-                count+=  combinationInfiCoins_subs(arr, tar-arr[idx], ind, ans+arr[idx]);
-                count += combinationInfiCoins_subs(arr, tar, ind+1, ans);
+        }else{
+            int count = 0;
+            for(int i = idx ; i < arr.length; i++){
+                if(tar - arr[i] >= 0)
+                count +=  combinationSingleCoins(arr, tar - arr[i], ans + arr[i], idx+1);
             }
+            return count;
         }
     }
-    public static int permutationInfiCoins_subs(int[] arr, int tar, int ind , String ans){
-        if(tar == 0){
-            return ans;
-            return 1;
-        }else {
-                int count = 0;
-            if (tar - arr[ind] >= 0){
 
-                count+=  combinationInfiCoins_subs(arr, tar-arr[idx], ind, ans+arr[idx]);
-                count += combinationInfiCoins_subs(arr, tar, ind+1, ans);
-            }
-        }
-    }
 }
+
+
