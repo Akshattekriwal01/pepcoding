@@ -81,7 +81,7 @@ class Main {
                 equisetHelper(arr, ind+1,  sum ,al );
             }
     }
-    // https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1#
+    // https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1#    
     public static ArrayList<String> findPath(int[][] m, int n) {
         // Your code here
         ArrayList<String> ans = new ArrayList<String>();
@@ -122,4 +122,45 @@ class Main {
         
         
     }
+
+    // gfg rat maze with multiple jumps and blocks but only right and down
+    public static void ratMazeMultipleJumpsRD() {
+        System.out.println("Hello world!");
+        int[][] input =  { {2, 1, 0, 0},
+                          {3, 1, 0, 1},
+                          {0, 1, 0, 1},
+                          {0, 1, 1, 1}
+                          };
+        int m = input.length;
+        int n = input[0].length;
+            if(input[0][0]== 0 || input[m-1][n-1]== 0)
+            return ;
+        int dir[][] = {{0,1},{1,0}};
+        String dirs[] = {"R", "D"};
+        ArrayList<String> ans = new ArrayList<String>();
+        floodfill(0,0, m-1,n-1,dir,dirs,input, ans, "");
+        System.out.println(ans);
+    
+      }
+    
+      public static int floodfill(int sr, int sc, int m , int n , int[][]dir , String[] dirs, int[][]input, ArrayList<String> ans, String psf ){
+              if(sr == m && sc == n){
+                ans.add(psf);
+                return 1;
+              }else{
+                int count = 0;
+                for(int d = 0 ; d< dirs.length; d++){
+                  for(int rad = 1 ; rad <= input[sr][sc] ;rad++ ){
+                    int r = sr + rad *dir[d][0];
+                    int c = sc + rad *dir[d][1];
+                  if(r <= m && c <= n && r >= 0 && c>=0)
+                    count += floodfill(r,c,m,n,dir,dirs,input,ans,psf+dirs[d]+rad);
+                    else{
+                    break;
+                    }
+                  }
+                }
+                return count;
+              }
+      }
 }
