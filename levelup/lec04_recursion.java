@@ -43,6 +43,7 @@ public class lec04_recursion {
 
     // THIS IS V V V V Important
     // Remember we use visited here to stop the current used coin from going to next call
+    // we then unvisit it so that it can be used again. 
      public static int permutationSingleCoins(int [] arr, int vis , int tar , String ans){
         if(tar == 0){
             System.out.println(ans);
