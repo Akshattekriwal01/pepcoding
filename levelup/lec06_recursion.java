@@ -3,7 +3,7 @@ public class lec06_recursion{
 
     public static void main(String args[]){
        // pairing("","ABDC");
-        countGoodSubstrings("abcd");
+      
     }
     public static int pairing(String psf,String str){
         if(0 == str.length()){
@@ -23,14 +23,6 @@ public class lec06_recursion{
        
     
       }
-      public static int countGoodSubstrings(String s) {
-        Integer[] arr= new Integer[3];
-        for(int i = 0 ; i< arr.length ; i++){
-            arr[i] = i ; 
-        }
-        // cannot custom sort PRIMITIVE array. 
-        Arrays.sort(arr,(a,b)->{ return -1*(a-b);} );
-        return 0;
-    }
+    
 }
 
