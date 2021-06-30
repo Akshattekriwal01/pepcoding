@@ -2,7 +2,7 @@ import java.util.*;
 public class TreeBuilder {
 
     public static void main(String[] args ) {
-        Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,12,13,null,null,null,null,14,null,null,15};
+        Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,11,12,13,null,null,null,null,14,null,null,15};
         TreeNode root = builder(arr);
         test(root);
     }
@@ -17,20 +17,21 @@ public class TreeBuilder {
         q.add(tree);
         int i = 1 ; 
        while(i<arr.length){
-            TreeNode t = q.pop();
+            TreeNode t = q.poll();
             if(arr[i]!=null){
                 TreeNode left = new TreeNode(arr[i]); 
                 t.left = left;
                 q.add(left);
-                ++i;
+                
             }
+            ++i;
             if(arr[i] != null){
                 TreeNode right = new TreeNode(arr[i]); 
                 t.right = right;
                 q.add(right);
-                ++i;
+               
             }
-
+            ++i;
         }
         return tree;
     }
@@ -47,7 +48,7 @@ public class TreeBuilder {
             int len = q.size(); 
             List<Integer> al = new ArrayList<Integer>(); 
             for(int i = 0 ;  i< len ; i++){
-                TreeNode t = q.pop();
+                TreeNode t = q.poll();
                al.add(t.val);   
                if(t.left != null){
                    q.add(t.left);
