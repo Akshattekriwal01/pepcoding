@@ -1,16 +1,22 @@
 import java.util.*; 
 
 class BurningTree{
-  
+  /**
+   * learn Tree edge cases :node is not present in the tree,skewe 
+   * 
+   */
    public static void main(String[] args){
-    Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,11,12,13,null,null,null,null,14,null,null,null,null,null,null,15};
+    //Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,11,12,13,null,null,null,null,14,null,null,null,null,null,null,15};
+    Integer[] arr = {1,2,null,3,null,4};
     TreeNode root = builder(arr);
-    burnTree(root,6);
-    List<TreeNode> al = NodetoRootPath(root,14);
-    for(TreeNode n : al ){
-        System.out.print(" "+n.val);
-    }
-    System.out.println(" ");
+    burnTree(root,2);
+
+    List<TreeNode> path = NodetoRootPath(root, 14); // instead of returning null in case of empty list return null
+    // System.out.println(path.size());
+    // for(TreeNode n : path){
+    //     System.out.println(n.val);
+    // }
+   
    }
    /**
     *  find target node. then return the node to rooth path. 
@@ -86,7 +92,7 @@ class BurningTree{
                 
             }
             ++i;
-            if(arr[i] != null){
+            if(arr.length !=i && arr[i] != null){
                 TreeNode right = new TreeNode(arr[i]); 
                 t.right = right;
                 q.add(right);
