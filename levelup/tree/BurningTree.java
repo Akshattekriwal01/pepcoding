@@ -1,27 +1,24 @@
 import java.util.*; 
-
+/**
+ * worst case when burning the left most node. The right most node will take a lot of time.  
+ */
 class BurningTree{
   /**
    * learn Tree edge cases :node is not present in the tree,skewe 
    * 
    */
    public static void main(String[] args){
-    //Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,11,12,13,null,null,null,null,14,null,null,null,null,null,null,15};
-    Integer[] arr = {1,2,null,3,null,4};
+     Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,11,12,13,null,null,null,null,14,null,null,null,null,null,null,15};
+    //Integer[] arr = {1,2,null,3,null,4}; SKEWD
+    //Integer[] arr = {1,2};
+
     TreeNode root = builder(arr);
     burnTree(root,2);
 
-    List<TreeNode> path = NodetoRootPath(root, 14); // instead of returning null in case of empty list return null
-    // System.out.println(path.size());
-    // for(TreeNode n : path){
-    //     System.out.println(n.val);
-    // }
+    List<TreeNode> path = NodetoRootPath(root, 14); //! instead of returning null in case of empty list return null
+
    
    }
-   /**
-    *  find target node. then return the node to rooth path. 
-        then move 
-    */
     // main function
    public static List<List<Integer>> burnTree(TreeNode root, int start){
        List<List<Integer>> ans= new ArrayList<List<Integer>>();
@@ -37,6 +34,7 @@ class BurningTree{
        if(root == null || (blocker!=null && root.val == blocker.val) ){
         return ;
        }else{
+        //! added an arraylist when adding the first node of a layer. beacuse container list does not exist for that layer. 
         if(ans.size() < (k+1) ){
             ans.add(new ArrayList<Integer>());          
         }
