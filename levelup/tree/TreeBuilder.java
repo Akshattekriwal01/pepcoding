@@ -2,8 +2,8 @@ import java.util.*;
 public class TreeBuilder {
 
     public static void main(String[] args ) {
-       // Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,11,12,13,null,null,null,null,14,null,null,15};
-        Integer[] arr = {1,2,null,3,null,4};
+        Integer[] arr = {1,2,3,4,5,6,7,null,null,8,9,10,11,12,13,null,null,null,null,14,null,null,15};
+        //Integer[] arr = {1,2    };
 
         TreeNode root = builder(arr);
         test(root);
@@ -23,7 +23,7 @@ public class TreeBuilder {
             TreeNode t = q.poll();
             //! check array length, when checking for null 
             //LEARN check ARRAY null and its length also 
-           
+           //
             if(arr[i]!=null){
                 TreeNode left = new TreeNode(arr[i]); 
                 t.left = left;
