@@ -49,7 +49,8 @@ class BurningTree{
 
    // returns a list containing path from target to root
    public static List<TreeNode> NodetoRootPath(TreeNode root, int target){
-                if(root == null ){
+            // LEARN in binary tree make root==null as base and see if leaf can also be base. 
+            if(root == null ){
                  return null;
                 }       
              if(root.val == target){
@@ -68,7 +69,7 @@ class BurningTree{
                 return rightList ; 
             }
                return null ; 
-            }
+            }      
    }
        // builds a tree in level order
        public static TreeNode builder(Integer[] arr){
