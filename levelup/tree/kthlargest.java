@@ -40,7 +40,7 @@ public class kthlargest {
         }
        return 0 ; 
     }
-    // O(n) O(1)
+    // O(n) O(1)  
     public static int reverseMorris(TreeNode root, int k){
        TreeNode curr = root; 
        int count = 0 ;
