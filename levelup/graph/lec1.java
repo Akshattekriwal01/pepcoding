@@ -27,7 +27,7 @@ public class lec1{
             this.w = w ;
         }
     }
-
+//asd
     public  static ArrayList<Edges>  build( int size, int[][] edges){
         ArrayList<Edges>[] graph = new ArrayList[size+1];
         for(int i = 0 ; i < graph.length ; i++){
