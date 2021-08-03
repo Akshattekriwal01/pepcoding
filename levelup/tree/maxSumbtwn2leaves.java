@@ -29,6 +29,8 @@ class maxSumbten2leaves{
        else{
            Pair left = helper (root.left);
            Pair right = helper (root.right); 
+
+           // I havent done left to right check here but still it is visible.  
            int nodetoLeafMax = root.val + Math.max(left.sum,right.sum);
           int leafToLeafMax = Math.max(left.maxSum, Math.max(right.maxSum,left.sum + right.sum + root.val));  
        
@@ -38,3 +40,8 @@ class maxSumbten2leaves{
     }
     
 }
+
+
+
+
+
